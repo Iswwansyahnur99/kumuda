@@ -51,8 +51,60 @@
         }
     </script>
 
-    <header>
-        </header>
+    <header class="bg-white/80 dark:bg-dark-bg/80 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold font-poppins text-primary-orange dark:text-dark-orange">
+                        Kumuda
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="index.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Home</a>
+                    <a href="layanan.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Services</a>
+                    <a href="portofolio.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Portfolio</a>
+                    <a href="blog.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Blog</a>
+                    <a href="kontak.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Contact</a>
+                    
+                    <a href="index.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Beranda</a>
+                    <a href="layanan.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Layanan</a>
+                    <a href="portofolio.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Portofolio</a>
+                    <a href="blog.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Blog</a>
+                    <a href="kontak.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Kontak</a>
+                </nav>
+
+                <div class="hidden md:flex items-center space-x-4">
+                     <a href="kontak.html" class="bg-primary-orange hover:bg-opacity-90 dark:bg-dark-orange dark:hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105" x-show="lang === 'en'">Free Consultation</a>
+                    <a href="kontak.html" class="bg-primary-orange hover:bg-opacity-90 dark:bg-dark-orange dark:hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105" x-show="lang === 'id'">Konsultasi Gratis</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-dark-text dark:text-light-text focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden bg-white dark:bg-dark-bg" x-transition>
+             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Home</a>
+                <a href="layanan.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Services</a>
+                <a href="portofolio.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Portfolio</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Blog</a>
+                <a href="kontak.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Contact</a>
+                
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Beranda</a>
+                <a href="layanan.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Layanan</a>
+                <a href="portofolio.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Portofolio</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Blog</a>
+                <a href="kontak.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Kontak</a>
+            </div>
+        </div>
+    </header>
 
     <main>
         <section class="py-20 lg:py-24">
@@ -73,18 +125,7 @@
 
                     <h2>2. Menjangkau Pasar Tanpa Batas</h2>
                     <p>Berbeda dengan toko fisik yang terbatas oleh lokasi geografis, website dapat diakses oleh siapa saja, kapan saja, dan dari mana saja. Ini membuka peluang bagi UMKM Kaltara untuk memasarkan produknya tidak hanya di tingkat lokal, tetapi juga nasional bahkan internasional.</p>
-
-                    <h2>3. Media Promosi yang Efektif dan Efisien</h2>
-                    <p>Website berfungsi sebagai pusat informasi dan promosi yang berjalan 24/7. Anda bisa menampilkan katalog produk, promo terbaru, hingga artikel bermanfaat yang relevan dengan bisnis Anda. Dari segi biaya, memiliki website jauh lebih efisien dibandingkan dengan metode promosi konvensional seperti mencetak brosur atau memasang iklan di media cetak.</p>
-
-                    <h2>4. Mempermudah Transaksi dan Interaksi dengan Pelanggan</h2>
-                    <p>Dengan fitur seperti formulir kontak, chat, atau bahkan e-commerce, website mempermudah komunikasi dan transaksi antara Anda dan pelanggan. Pelanggan bisa dengan mudah bertanya, memberikan masukan, atau langsung melakukan pembelian produk secara online.</p>
-
-                    <h2>5. Analisis Data untuk Pengembangan Bisnis</h2>
-                    <p>Website modern dapat diintegrasikan dengan alat analisis seperti Google Analytics. Dengan ini, Anda dapat memantau data pengunjung, seperti demografi, perilaku, dan halaman mana yang paling banyak dikunjungi. Data ini sangat berharga untuk memahami pasar dan merumuskan strategi bisnis yang lebih tepat sasaran di masa depan.</p>
                     
-                    <p>Kesimpulannya, investasi pada sebuah website adalah langkah strategis yang akan membawa banyak manfaat jangka panjang bagi UMKM di Kalimantan Utara. Ini adalah cara untuk tetap relevan, kompetitif, dan siap menyambut masa depan digital.</p>
-                
                     <a href="blog.html" class="mt-8 inline-block font-semibold text-primary-orange dark:text-dark-orange hover:underline">&larr; Kembali ke Blog</a>
                 </article>
             </div>
@@ -92,7 +133,43 @@
     </main>
 
     <footer class="bg-gray-100 dark:bg-dark-bg/50">
-       </footer>
-
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <a href="index.html" class="text-2xl font-bold font-poppins text-primary-orange dark:text-dark-orange">
+                        Kumuda
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400" x-show="lang === 'en'">Creative & IT solutions from North Kalimantan, helping local businesses go digital.</p>
+                    <p class="text-gray-600 dark:text-gray-400" x-show="lang === 'id'">Solusi Kreatif & IT dari Kalimantan Utara, membantu bisnis lokal menjadi digital.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'en'">Navigation</h4>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'id'">Navigasi</h4>
+                    <nav class="mt-4 space-y-2">
+                        <a href="layanan.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Services</a>
+                        <a href="portofolio.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Portfolio</a>
+                        <a href="blog.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Blog</a>
+                        <a href="kontak.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Contact</a>
+                        
+                        <a href="layanan.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Layanan</a>
+                        <a href="portofolio.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Portofolio</a>
+                        <a href="blog.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Blog</a>
+                        <a href="kontak.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Kontak</a>
+                    </nav>
+                </div>
+                <div>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'en'">Contact</h4>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'id'">Kontak</h4>
+                    <div class="mt-4 space-y-2">
+                        <p class="text-gray-600 dark:text-gray-400"><strong>Email:</strong> info@kumuda.co.id</p>
+                        <p class="text-gray-600 dark:text-gray-400"><strong>WhatsApp:</strong> +62 857 5153 7848</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8 text-center text-gray-500 dark:text-gray-400">
+                &copy; <span x-text="new Date().getFullYear()"></span> Kumuda Experience (PT Kumuda Kreasi Nusantara). All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
