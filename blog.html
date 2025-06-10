@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Wawasan Digital - Kumuda Experience</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -12,35 +11,22 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
     </style>
-
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-orange': '#FF7A00', 'primary-blue': '#0085FF', 'accent-yellow': '#FFC700', 'dark-text': '#1E1E1E',
-                        'dark-bg': '#121212', 'dark-orange': '#FF8C2B', 'dark-blue': '#33A1FF', 'dark-yellow': '#FFD340', 'light-text': '#F5F5F5',
-                    },
-                    fontFamily: { 'poppins': ['Poppins', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
-                }
-            }
-        }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'primary-orange': '#FF7A00', 'primary-blue': '#0085FF', 'accent-yellow': '#FFC700', 'dark-text': '#1E1E1E', 'dark-bg': '#121212', 'dark-orange': '#FF8C2B', 'dark-blue': '#33A1FF', 'dark-yellow': '#FFD340', 'light-text': '#F5F5F5', }, fontFamily: { 'poppins': ['Poppins', 'sans-serif'], 'inter': ['Inter', 'sans-serif'], } } } }
     </script>
 </head>
 <body class="bg-white dark:bg-dark-bg text-dark-text dark:text-light-text antialiased">
-    
     <script>
-        function kumudaExperience() {
+        function kumudaExperience(config) {
             return {
                 lang: 'id', 
                 darkMode: false,
                 mobileMenuOpen: false, 
+                currentPage: config.currentPage || 'home',
                 toggleLang() { this.lang = this.lang === 'id' ? 'en' : 'id'; document.documentElement.lang = this.lang; },
                 toggleTheme() { this.darkMode = !this.darkMode; localStorage.setItem('darkMode', this.darkMode); },
                 init() { if (localStorage.getItem('darkMode') !== null) { this.darkMode = localStorage.getItem('darkMode') === 'true'; } AOS.init({ once: true, duration: 800, offset: 50 }); }
@@ -48,8 +34,60 @@
         }
     </script>
 
-    <header>
-        </header>
+    <header class="bg-white/80 dark:bg-dark-bg/80 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold font-poppins text-primary-orange dark:text-dark-orange">
+                        Kumuda
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="index.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Home</a>
+                    <a href="layanan.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Services</a>
+                    <a href="portofolio.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Portfolio</a>
+                    <a href="blog.html" class="font-semibold text-primary-orange dark:text-dark-orange transition-colors" x-show="lang === 'en'">Blog</a>
+                    <a href="kontak.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Contact</a>
+                    
+                    <a href="index.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Beranda</a>
+                    <a href="layanan.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Layanan</a>
+                    <a href="portofolio.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Portofolio</a>
+                    <a href="blog.html" class="font-semibold text-primary-orange dark:text-dark-orange transition-colors" x-show="lang === 'id'">Blog</a>
+                    <a href="kontak.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Kontak</a>
+                </nav>
+
+                <div class="hidden md:flex items-center space-x-4">
+                     <a href="kontak.html" class="bg-primary-orange hover:bg-opacity-90 dark:bg-dark-orange dark:hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105" x-show="lang === 'en'">Free Consultation</a>
+                    <a href="kontak.html" class="bg-primary-orange hover:bg-opacity-90 dark:bg-dark-orange dark:hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105" x-show="lang === 'id'">Konsultasi Gratis</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-dark-text dark:text-light-text focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden bg-white dark:bg-dark-bg" x-transition>
+             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Home</a>
+                <a href="layanan.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Services</a>
+                <a href="portofolio.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Portfolio</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Blog</a>
+                <a href="kontak.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Contact</a>
+                
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Beranda</a>
+                <a href="layanan.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Layanan</a>
+                <a href="portofolio.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Portofolio</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Blog</a>
+                <a href="kontak.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Kontak</a>
+            </div>
+        </div>
+    </header>
 
     <main>
         <section class="bg-gray-50 dark:bg-gray-800/50 py-20 lg:py-28">
@@ -65,32 +103,76 @@
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <article class="flex flex-col bg-white dark:bg-gray-800/50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
-                        <img src="https://via.placeholder.com/600x400.png?text=UMKM+Go+Digital" alt="Blog post image" class="h-56 w-full object-cover">
+                        <a href="artikel-detail.html" class="block">
+                            <img src="https://via.placeholder.com/600x400.png?text=UMKM+Go+Digital" alt="Blog post image" class="h-56 w-full object-cover">
+                        </a>
                         <div class="p-6 flex flex-col flex-grow">
                             <p class="text-sm text-primary-blue dark:text-dark-blue font-semibold">Bisnis</p>
-                            <h3 class="mt-2 text-xl font-bold font-poppins">5 Alasan Kenapa UMKM di Kaltara Wajib Punya Website di 2025</h3>
+                            <h3 class="mt-2 text-xl font-bold font-poppins">
+                                <a href="artikel-detail.html" class="hover:text-primary-orange dark:hover:text-dark-orange">5 Alasan Kenapa UMKM di Kaltara Wajib Punya Website di 2025</a>
+                            </h3>
                             <p class="mt-3 text-gray-600 dark:text-gray-300 flex-grow">Di era digital ini, website bukan lagi kemewahan, melainkan kebutuhan. Berikut adalah lima alasan utamanya...</p>
                             <a href="artikel-detail.html" class="mt-4 font-semibold text-primary-orange dark:text-dark-orange hover:underline">Baca Selengkapnya &rarr;</a>
                         </div>
                     </article>
 
                     <article class="flex flex-col bg-white dark:bg-gray-800/50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://via.placeholder.com/600x400.png?text=Tren+UI/UX" alt="Blog post image" class="h-56 w-full object-cover">
+                         <a href="artikel-detail.html" class="block">
+                            <img src="https://via.placeholder.com/600x400.png?text=Tren+UI/UX" alt="Blog post image" class="h-56 w-full object-cover">
+                        </a>
                         <div class="p-6 flex flex-col flex-grow">
                             <p class="text-sm text-primary-blue dark:text-dark-blue font-semibold">Desain</p>
-                            <h3 class="mt-2 text-xl font-bold font-poppins">Tren Desain UI/UX yang Akan Mendominasi Tahun Depan</h3>
+                             <h3 class="mt-2 text-xl font-bold font-poppins">
+                                <a href="artikel-detail.html" class="hover:text-primary-orange dark:hover:text-dark-orange">Tren Desain UI/UX yang Akan Mendominasi Tahun Depan</a>
+                            </h3>
                             <p class="mt-3 text-gray-600 dark:text-gray-300 flex-grow">Dari 3D-interaktif hingga desain minimalis yang lebih berani, mari kita lihat apa yang akan populer...</p>
                             <a href="artikel-detail.html" class="mt-4 font-semibold text-primary-orange dark:text-dark-orange hover:underline">Baca Selengkapnya &rarr;</a>
                         </div>
                     </article>
 
-                    </div>
+                </div>
             </div>
         </section>
     </main>
-    
-    <footer class="bg-gray-100 dark:bg-dark-bg/50">
-       </footer>
 
+    <footer class="bg-gray-100 dark:bg-dark-bg/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <a href="index.html" class="text-2xl font-bold font-poppins text-primary-orange dark:text-dark-orange">
+                        Kumuda
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400" x-show="lang === 'en'">Creative & IT solutions from North Kalimantan, helping local businesses go digital.</p>
+                    <p class="text-gray-600 dark:text-gray-400" x-show="lang === 'id'">Solusi Kreatif & IT dari Kalimantan Utara, membantu bisnis lokal menjadi digital.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'en'">Navigation</h4>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'id'">Navigasi</h4>
+                    <nav class="mt-4 space-y-2">
+                        <a href="layanan.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Services</a>
+                        <a href="portofolio.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Portfolio</a>
+                        <a href="blog.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Blog</a>
+                        <a href="kontak.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'en'">Contact</a>
+                        
+                        <a href="layanan.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Layanan</a>
+                        <a href="portofolio.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Portofolio</a>
+                        <a href="blog.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Blog</a>
+                        <a href="kontak.html" class="block text-gray-600 dark:text-gray-400 hover:text-primary-blue dark:hover:text-dark-blue" x-show="lang === 'id'">Kontak</a>
+                    </nav>
+                </div>
+                <div>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'en'">Contact</h4>
+                    <h4 class="font-bold font-poppins text-lg" x-show="lang === 'id'">Kontak</h4>
+                    <div class="mt-4 space-y-2">
+                        <p class="text-gray-600 dark:text-gray-400"><strong>Email:</strong> info@kumuda.co.id</p>
+                        <p class="text-gray-600 dark:text-gray-400"><strong>WhatsApp:</strong> +62 857 5153 7848</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8 text-center text-gray-500 dark:text-gray-400">
+                &copy; <span x-text="new Date().getFullYear()"></span> Kumuda Experience (PT Kumuda Kreasi Nusantara). All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
