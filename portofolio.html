@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id" x-data="kumudaExperience({ currentPage: 'portofolio' })" x-bind:class="{ 'dark': darkMode }" x-init="init()">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Kumuda Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .nav-link-active { color: #FF7A00; }
+        .dark .nav-link-active { color: #FF8C2B; }
+        .filter-btn { /* Style for filter buttons */ }
+        .filter-btn-active { background-color: #FF7A00; color: white; }
+        .dark .filter-btn-active { background-color: #FF8C2B; }
+    </style>
+    </head>
+<body class="bg-white dark:bg-dark-bg text-dark-text dark:text-light-text antialiased">
+    <script>
+        function kumudaExperience(config) {
+            return {
+                lang: 'id', 
+                darkMode: false, 
+                mobileMenuOpen: false, 
+                currentPage: config.currentPage || 'home',
+                activeFilter: 'all', // State for portfolio filter
+                toggleLang() { /* ... */ },
+                toggleTheme() { /* ... */ },
+                init() { /* ... */ }
+            }
+        }
+    </script>
+    <main>
+        <section class="bg-gray-50 dark:bg-gray-800/50 py-20 lg:py-28">
+            <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+                <h1 class="text-4xl lg:text-5xl font-bold font-poppins" x-show="lang === 'en'">Our Best Work</h1>
+                <h1 class="text-4xl lg:text-5xl font-bold font-poppins" x-show="lang === 'id'">Beberapa Karya Terbaik Kami</h1>
+                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300" x-show="lang === 'en'">We are proud of every project we deliver. Here are some of them.</p>
+                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300" x-show="lang === 'id'">Kami bangga dengan setiap proyek yang kami kerjakan. Berikut adalah beberapa di antaranya.</p>
+            </div>
+        </section>
+
+        <section class="py-20 lg:py-24">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-center flex-wrap gap-2 md:gap-4 mb-12" data-aos="fade-up">
+                    <button @click="activeFilter = 'all'" :class="{'filter-btn-active': activeFilter === 'all'}" class="filter-btn px-5 py-2 font-semibold rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-primary-orange hover:text-white dark:hover:bg-dark-orange transition">Semua</button>
+                    <button @click="activeFilter = 'web'" :class="{'filter-btn-active': activeFilter === 'web'}" class="filter-btn px-5 py-2 font-semibold rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-primary-orange hover:text-white dark:hover:bg-dark-orange transition">Web</button>
+                    <button @click="activeFilter = 'app'" :class="{'filter-btn-active': activeFilter === 'app'}" class="filter-btn px-5 py-2 font-semibold rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-primary-orange hover:text-white dark:hover:bg-dark-orange transition">App</button>
+                    <button @click="activeFilter = 'branding'" :class="{'filter-btn-active': activeFilter === 'branding'}" class="filter-btn px-5 py-2 font-semibold rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-primary-orange hover:text-white dark:hover:bg-dark-orange transition">Branding</button>
+                    <button @click="activeFilter = 'eo'" :class="{'filter-btn-active': activeFilter === 'eo'}" class="filter-btn px-5 py-2 font-semibold rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-primary-orange hover:text-white dark:hover:bg-dark-orange transition">EO</button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="group" x-show="activeFilter === 'all' || activeFilter === 'web'" x-transition data-aos="fade-up">
+                        <div class="overflow-hidden rounded-lg">
+                            <img src="https://via.placeholder.com/600x400.png?text=Website+UMKM" alt="Project" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold">Website Kopi Semangat</h3>
+                        <p class="text-gray-500">Web Development</p>
+                    </div>
+                    <div class="group" x-show="activeFilter === 'all' || activeFilter === 'branding'" x-transition data-aos="fade-up" data-aos-delay="100">
+                         <div class="overflow-hidden rounded-lg">
+                            <img src="https://via.placeholder.com/600x400.png?text=Branding+Caleg" alt="Project" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold">Branding H. Ahmad Syarif</h3>
+                        <p class="text-gray-500">Branding</p>
+                    </div>
+                     <div class="group" x-show="activeFilter === 'all' || activeFilter === 'app'" x-transition data-aos="fade-up" data-aos-delay="200">
+                         <div class="overflow-hidden rounded-lg">
+                            <img src="https://via.placeholder.com/600x400.png?text=Aplikasi+Koperasi" alt="Project" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold">Aplikasi Koperasi Merah Putih</h3>
+                        <p class="text-gray-500">App Development</p>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    </body>
+</html>

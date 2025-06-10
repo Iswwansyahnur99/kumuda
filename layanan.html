@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id" x-data="kumudaExperience({ currentPage: 'layanan' })" x-bind:class="{ 'dark': darkMode }" x-init="init()">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Kami - Kumuda Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .nav-link-active { color: #FF7A00; }
+        .dark .nav-link-active { color: #FF8C2B; }
+    </style>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'primary-orange': '#FF7A00', 'primary-blue': '#0085FF', 'accent-yellow': '#FFC700', 'dark-text': '#1E1E1E', 'dark-bg': '#121212', 'dark-orange': '#FF8C2B', 'dark-blue': '#33A1FF', 'dark-yellow': '#FFD340', 'light-text': '#F5F5F5', }, fontFamily: { 'poppins': ['Poppins', 'sans-serif'], 'inter': ['Inter', 'sans-serif'], } } } }
+    </script>
+</head>
+<body class="bg-white dark:bg-dark-bg text-dark-text dark:text-light-text antialiased">
+    <script>
+        function kumudaExperience(config) {
+            return {
+                lang: 'id', 
+                darkMode: false, 
+                mobileMenuOpen: false, 
+                currentPage: config.currentPage || 'home',
+                toggleLang() { this.lang = this.lang === 'id' ? 'en' : 'id'; document.documentElement.lang = this.lang; },
+                toggleTheme() { this.darkMode = !this.darkMode; localStorage.setItem('darkMode', this.darkMode); },
+                init() { if (localStorage.getItem('darkMode') !== null) { this.darkMode = localStorage.getItem('darkMode') === 'true'; } AOS.init({ once: true, duration: 800, offset: 50 }); }
+            }
+        }
+    </script>
+
+    <header class="bg-white/80 dark:bg-dark-bg/80 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <a href="index.html" class="text-2xl font-bold font-poppins text-primary-orange dark:text-dark-orange">Kumuda</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" :class="{'nav-link-active': currentPage === 'home'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'en'">Home</a>
+                    <a href="layanan.html" :class="{'nav-link-active': currentPage === 'layanan'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'en'">Services</a>
+                    <a href="portofolio.html" :class="{'nav-link-active': currentPage === 'portofolio'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'en'">Portfolio</a>
+                    <a href="blog.html" :class="{'nav-link-active': currentPage === 'blog'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'en'">Blog</a>
+                    <a href="index.html" :class="{'nav-link-active': currentPage === 'home'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'id'">Beranda</a>
+                    <a href="layanan.html" :class="{'nav-link-active': currentPage === 'layanan'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'id'">Layanan</a>
+                    <a href="portofolio.html" :class="{'nav-link-active': currentPage === 'portofolio'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'id'">Portofolio</a>
+                    <a href="blog.html" :class="{'nav-link-active': currentPage === 'blog'}" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange" x-show="lang === 'id'">Blog</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    </div>
+                <div class="md:hidden flex items-center">
+                    </div>
+            </nav>
+        </div>
+        </header>
+
+    <main>
+        <section class="bg-gray-50 dark:bg-gray-800/50 py-20 lg:py-28">
+            <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+                <h1 class="text-4xl lg:text-5xl font-bold font-poppins" x-show="lang === 'en'">Our Digital Services</h1>
+                <h1 class="text-4xl lg:text-5xl font-bold font-poppins" x-show="lang === 'id'">Layanan Digital Kami</h1>
+                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300" x-show="lang === 'en'">We provide a complete range of services to bring your digital presence to life.</p>
+                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300" x-show="lang === 'id'">Kami menyediakan serangkaian layanan lengkap untuk menghidupkan kehadiran digital Anda.</p>
+            </div>
+        </section>
+
+        <section class="py-20 lg:py-24">
+            <div class="container mx-auto px-4 space-y-16">
+
+                <div class="grid md:grid-cols-2 gap-12 items-center" data-aos="fade-right">
+                    <div>
+                        <h2 class="text-3xl font-bold text-primary-orange dark:text-dark-orange" x-show="lang === 'en'">Website Development</h2>
+                        <h2 class="text-3xl font-bold text-primary-orange dark:text-dark-orange" x-show="lang === 'id'">Pengembangan Website</h2>
+                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300" x-show="lang === 'en'">We build professional, fast, and responsive websites. From company profiles, e-commerce, to government portals, we ensure your site is a credible and effective digital asset.</p>
+                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300" x-show="lang === 'id'">Kami membangun website profesional, cepat, dan responsif. Mulai dari profil perusahaan, toko online, hingga portal pemerintahan, kami memastikan situs Anda menjadi aset digital yang kredibel dan efektif.</p>
+                        <ul class="mt-6 space-y-2 text-gray-700 dark:text-gray-200">
+                           <li class="flex items-center gap-3"><svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Mobile-First Design</li>
+                           <li class="flex items-center gap-3"><svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Basic SEO Optimization</li>
+                           <li class="flex items-center gap-3"><svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Easy Content Management</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                        <img src="https://via.placeholder.com/500x300.png?text=Website+Development" alt="Website Development" class="rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center" data-aos="fade-left">
+                     <div class="p-8 bg-gray-100 dark:bg-gray-800 rounded-lg md:order-last">
+                        <img src="https://via.placeholder.com/500x300.png?text=Mobile+App" alt="Mobile App" class="rounded-lg shadow-lg">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-primary-orange dark:text-dark-orange" x-show="lang === 'en'">Mobile App Development</h2>
+                        <h2 class="text-3xl font-bold text-primary-orange dark:text-dark-orange" x-show="lang === 'id'">Pengembangan Aplikasi Mobile</h2>
+                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300" x-show="lang === 'en'">We create intuitive and high-performance Android & iOS applications. From on-demand services to internal company systems, we bring your ideas to the user's fingertips.</p>
+                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300" x-show="lang === 'id'">Kami menciptakan aplikasi Android & iOS yang intuitif dan beperforma tinggi. Dari layanan on-demand hingga sistem internal perusahaan, kami membawa ide Anda ke genggaman pengguna.</p>
+                        <ul class="mt-6 space-y-2 text-gray-700 dark:text-gray-200">
+                           <li class="flex items-center gap-3"><svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Native & Cross-Platform</li>
+                           <li class="flex items-center gap-3"><svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Clean UI/UX</li>
+                           <li class="flex items-center gap-3"><svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Secure & Scalable Backend</li>
+                        </ul>
+                    </div>
+                </div>
+
+                </div>
+        </section>
+
+        <section class="bg-primary-blue dark:bg-dark-blue">
+            </section>
+    </main>
+    
+    <footer class="bg-gray-100 dark:bg-dark-bg/50">
+        </footer>
+</body>
+</html>
