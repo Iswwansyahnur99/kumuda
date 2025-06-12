@@ -90,7 +90,6 @@
         }
     </script>
 
-
     <header class="bg-white/80 dark:bg-dark-bg/80 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -103,22 +102,22 @@
                 <nav class="hidden md:flex md:space-x-8">
                     <a href="#home" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Home</a>
                     <a href="#services" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Services</a>
-                    <a href="portofolio.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Portfolio</a>
+                    <a href="#portfolio" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Portfolio</a>
                     <a href="#about" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">About</a>
-                    <a href="kontak.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Contact</a>
+                    <a href="#contact" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'en'">Contact</a>
                     
                     <a href="#home" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Beranda</a>
                     <a href="#services" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Layanan</a>
-                    <a href="portofolio.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Portofolio</a>
+                    <a href="#portfolio" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Portofolio</a>
                     <a href="#about" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Tentang</a>
-                    <a href="kontak.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Kontak</a>
+                    <a href="#contact" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-orange dark:hover:text-dark-orange transition-colors" x-show="lang === 'id'">Kontak</a>
                 </nav>
 
                 <div class="hidden md:flex items-center space-x-4">
                     <div class="flex items-center space-x-1 text-sm font-semibold">
-                        <span x-on:click="lang = 'en'" class="cursor-pointer p-1" x-bind:class="{ 'text-primary-blue dark:text-dark-blue': lang === 'en', 'text-gray-400': lang !== 'en' }">EN</span>
+                        <span x-on:click="lang = 'en'" class="cursor-pointer p-1" :class="{ 'text-primary-blue dark:text-dark-blue': lang === 'en', 'text-gray-400': lang !== 'en' }">EN</span>
                         <span class="text-gray-300 dark:text-gray-600">/</span>
-                        <span x-on:click="lang = 'id'" class="cursor-pointer p-1" x-bind:class="{ 'text-primary-blue dark:text-dark-blue': lang === 'id', 'text-gray-400': lang !== 'id' }">ID</span>
+                        <span x-on:click="lang = 'id'" class="cursor-pointer p-1" :class="{ 'text-primary-blue dark:text-dark-blue': lang === 'id', 'text-gray-400': lang !== 'id' }">ID</span>
                     </div>
 
                     <button x-on:click="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
@@ -132,7 +131,9 @@
 
                 <div class="md:hidden flex items-center">
                     <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-dark-text dark:text-light-text focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -140,17 +141,17 @@
         
         <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden bg-white dark:bg-dark-bg" x-transition>
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Home</a>
-                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Services</a>
-                <a href="portofolio.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Portfolio</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">About</a>
-                <a href="kontak.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Contact</a>
+                <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Home</a>
+                <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Services</a>
+                <a href="#portfolio" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Portfolio</a>
+                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">About</a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'en'">Contact</a>
                 
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Beranda</a>
-                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Layanan</a>
-                <a href="portofolio.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Portofolio</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Tentang</a>
-                <a href="kontak.html" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Kontak</a>
+                <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Beranda</a>
+                <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Layanan</a>
+                <a href="#portfolio" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Portofolio</a>
+                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Tentang</a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium" x-show="lang === 'id'">Kontak</a>
                 
                 <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
                 
@@ -167,7 +168,7 @@
                 </div>
                 
                 <div class="p-3">
-                    <a href="kalkulator-harga.html" class="block text-center w-full bg-primary-orange hover:bg-opacity-90 dark:bg-dark-orange dark:hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded-full" x-show="lang === 'en'">Price Estimation</a>
+                   <a href="kalkulator-harga.html" class="block text-center w-full bg-primary-orange hover:bg-opacity-90 dark:bg-dark-orange dark:hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded-full" x-show="lang === 'en'">Price Estimation</a>
                    <a href="kalkulator-harga.html" class="block text-center w-full bg-primary-orange hover:bg-opacity-90 dark:bg-dark-orange dark:hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded-full" x-show="lang === 'id'">Perkiraan Harga</a>
                 </div>
             </div>
@@ -273,7 +274,6 @@
             </div>
         </section>
 
-
         <section id="services" class="py-20 lg:py-32 bg-gray-50 dark:bg-gray-800/50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center" data-aos="fade-up">
@@ -357,6 +357,48 @@
             </div>
         </section>
 
+        <section id="portfolio" class="py-20 lg:py-32 bg-white dark:bg-dark-bg">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="text-3xl lg:text-4xl font-bold font-poppins text-dark-text dark:text-white" x-show="lang === 'en'">Our Best Work</h2>
+                    <h2 class="text-3xl lg:text-4xl font-bold font-poppins text-dark-text dark:text-white" x-show="lang === 'id'">Beberapa Karya Terbaik Kami</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600 dark:text-gray-300" x-show="lang === 'en'">We are proud of every project we deliver. Here are some of them.</p>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600 dark:text-gray-300" x-show="lang === 'id'">Kami bangga dengan setiap proyek yang kami kerjakan. Berikut adalah beberapa di antaranya.</p>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="overflow-hidden rounded-lg shadow-lg">
+                            <img src="https://via.placeholder.com/600x400.png?text=Website+UMKM" alt="Project Website UMKM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold">Website Kopi Semangat</h3>
+                        <p class="text-gray-500">Web Development</p>
+                    </div>
+                    <div class="group" data-aos="fade-up" data-aos-delay="200">
+                         <div class="overflow-hidden rounded-lg shadow-lg">
+                            <img src="https://via.placeholder.com/600x400.png?text=Branding+Caleg" alt="Project Branding" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold">Branding H. Ahmad Syarif</h3>
+                        <p class="text-gray-500">Branding</p>
+                    </div>
+                     <div class="group" data-aos="fade-up" data-aos-delay="300">
+                         <div class="overflow-hidden rounded-lg shadow-lg">
+                            <img src="https://via.placeholder.com/600x400.png?text=Aplikasi+Koperasi" alt="Project Aplikasi Mobile" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold">Aplikasi Koperasi Merah Putih</h3>
+                        <p class="text-gray-500">App Development</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16">
+                    <a href="portofolio.html" class="bg-primary-blue hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105">
+                        <span x-show="lang === 'en'">View All Portfolio</span>
+                        <span x-show="lang === 'id'">Lihat Semua Portofolio</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="bg-primary-blue dark:bg-dark-blue">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
                 <div data-aos="zoom-in">
@@ -430,9 +472,9 @@
                     <h4 class="font-bold font-poppins text-lg" x-show="lang === 'id'">Pengaturan</h4>
                     <div class="mt-4 space-y-4">
                         <div class="flex items-center space-x-1 font-semibold">
-                            <span x-on:click="lang = 'en'" class="cursor-pointer p-1" x-bind:class="{ 'text-primary-blue dark:text-dark-blue': lang === 'en', 'text-gray-500': lang !== 'en' }">EN</span>
+                            <span x-on:click="lang = 'en'" class="cursor-pointer p-1" :class="{ 'text-primary-blue dark:text-dark-blue': lang === 'en', 'text-gray-500': lang !== 'en' }">EN</span>
                             <span class="text-gray-300 dark:text-gray-600">/</span>
-                            <span x-on:click="lang = 'id'" class="cursor-pointer p-1" x-bind:class="{ 'text-primary-blue dark:text-dark-blue': lang === 'id', 'text-gray-500': lang !== 'id' }">ID</span>
+                            <span x-on:click="lang = 'id'" class="cursor-pointer p-1" :class="{ 'text-primary-blue dark:text-dark-blue': lang === 'id', 'text-gray-500': lang !== 'id' }">ID</span>
                         </div>
                         <button x-on:click="toggleTheme()" class="flex items-center gap-2 font-semibold text-gray-600 dark:text-gray-400">
                              <div class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
