@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id" x-data="kumudaExperience({ currentPage: 'kalkulator' })" x-bind:class="{ 'dark': darkMode }" x-init="init()">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Estimasi Harga - Kumuda Experience</title>
+    <meta name="description" content="Dapatkan estimasi harga instan untuk proyek digital Anda bersama Kumuda Experience. Coba kalkulator interaktif kami sekarang.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-orange': '#FF7A00', 'primary-blue': '#0085FF', 'accent-yellow': '#FFC700', 'dark-text': '#1E1E1E',
+                        'dark-bg': '#121212', 'dark-orange': '#FF8C2B', 'dark-blue': '#33A1FF', 'dark-yellow': '#FFD340', 'light-text': '#F5F5F5',
+                    },
+                    fontFamily: { 'poppins': ['Poppins', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-white dark:bg-dark-bg text-dark-text dark:text-light-text antialiased">
+
+    <script>
+        function kumudaExperience(config) {
+            return {
+                lang: 'id',
+                darkMode: false,
+                mobileMenuOpen: false,
+                currentPage: config.currentPage || 'home',
+
+                // Data dan logika untuk kalkulator
+                calculator: {
+                    step: 1,
+                    services: [
+                        { id: 'web', name: 'Pengembangan Website', basePrice: 5000000, icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+                        { id: 'app', name: 'Aplikasi Mobile', basePrice: 15000000, icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z' },
+                        { id: 'branding', name: 'Digital Marketing & Branding', basePrice: 3000000, icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6' }
+                    ],
+                    features: {
+                        web: [
+                            { id: 'web-ecommerce', name: 'Toko Online (E-commerce)', price: 4000000, selected: false },
+                            { id: 'web-booking', name: 'Sistem Booking/Reservasi', price: 3500000, selected: false },
+                            { id: 'web-cms', name: 'Blog/Manajemen Konten', price: 1500000, selected: false },
+                            { id: 'web-integrasi', name: 'Integrasi Pihak Ketiga (API)', price: 2500000, selected: false }
+                        ],
+                        app: [
+                            { id: 'app-ecommerce', name: 'Fungsi Jual-Beli', price: 8000000, selected: false },
+                            { id: 'app-notif', name: 'Push Notifications', price: 3000000, selected: false },
+                            { id: 'app-maps', name: 'Integrasi Peta & Lokasi', price: 4000000, selected: false },
+                            { id: 'app-payment', name: 'Gerbang Pembayaran', price: 4500000, selected: false }
+                        ],
+                        branding: [
+                            { id: 'branding-logo', name: 'Desain Logo Profesional', price: 1500000, selected: false },
+                            { id: 'branding-kit', name: 'Social Media Kit', price: 2000000, selected: false },
+                            { id: 'branding-copywriting', name: 'Copywriting untuk Iklan', price: 1000000, selected: false }
+                        ]
+                    },
+                    selectedService: '',
+                    totalPrice: 0,
+                    selectService(serviceId) {
+                        this.selectedService = serviceId;
+                        this.calculateTotal();
+                        this.step = 2;
+                    },
+                    toggleFeature(feature) {
+                        feature.selected = !feature.selected;
+                        this.calculateTotal();
+                    },
+                    calculateTotal() {
+                        const service = this.services.find(s => s.id === this.selectedService);
+                        if (!service) { this.totalPrice = 0; return; }
+                        let total = service.basePrice;
+                        const activeFeatures = this.features[this.selectedService] || [];
+                        activeFeatures.forEach(feature => {
+                            if (feature.selected) { total += feature.price; }
+                        });
+                        this.totalPrice = total;
+                    },
+                    formatCurrency(amount) {
+                        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
+                    }
+                },
+                init() {
+                    if (localStorage.getItem('darkMode') !== null) {
+                        this.darkMode = localStorage.getItem('darkMode') === 'true';
+                    }
+                    AOS.init({ once: true, duration: 800, offset: 50 });
+                }
+            };
+        }
+    </script>
+    
+    <header class="bg-white/80 dark:bg-dark-bg/80 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="text-2xl font-bold font-poppins text-primary-orange dark:text-dark-orange">Kumuda</a>
+                <a href="kontak.html" class="bg-primary-orange text-white font-bold py-2 px-4 rounded-full">Hubungi Kami</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="py-20 lg:py-24" x-data="calculator">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto">
+                    <div x-show="step === 1" data-aos="fade-up">
+                        <h1 class="text-3xl lg:text-4xl font-bold text-center">Pilih Layanan Utama</h1>
+                        <p class="text-center mt-2 text-gray-600 dark:text-gray-300">Mulailah dengan memilih jenis layanan digital yang Anda butuhkan.</p>
+                        <div class="grid md:grid-cols-3 gap-6 mt-12">
+                            <template x-for="service in services" :key="service.id">
+                                <div @click="selectService(service.id)" class="cursor-pointer text-center p-6 border-2 rounded-lg hover:border-primary-orange hover:bg-orange-50/50 dark:hover:bg-gray-800 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-primary-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" :d="service.icon" /></svg>
+                                    <h3 class="font-bold mt-4 text-lg" x-text="service.name"></h3>
+                                    <p class="text-sm text-gray-500">Mulai dari <span x-text="formatCurrency(service.basePrice)"></span></p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div x-show="step === 2" data-aos="fade-up">
+                        <button @click="step = 1" class="mb-6 font-semibold text-primary-blue dark:text-dark-blue">&larr; Kembali Pilih Layanan</button>
+                        <h2 class="text-3xl lg:text-4xl font-bold">Pilih Fitur Tambahan</h2>
+                        <p class="mt-2 text-gray-600 dark:text-gray-300">Centang fitur yang ingin Anda tambahkan ke proyek Anda.</p>
+                        <div class="mt-8 space-y-4">
+                            <template x-for="feature in features[selectedService]" :key="feature.id">
+                                <label :for="feature.id" class="flex items-center p-4 border rounded-lg cursor-pointer transition" :class="feature.selected ? 'border-primary-orange bg-orange-50/50 dark:bg-gray-800' : 'border-gray-300 dark:border-gray-700'">
+                                    <input :id="feature.id" type="checkbox" @change="toggleFeature(feature)" class="h-5 w-5 rounded text-primary-orange focus:ring-primary-orange">
+                                    <span class="ml-4 flex-grow font-semibold" x-text="feature.name"></span>
+                                    <span class="text-gray-700 dark:text-gray-200" x-text="'+ ' + formatCurrency(feature.price)"></span>
+                                </label>
+                            </template>
+                        </div>
+                        <div class="mt-12 p-6 bg-gray-100 dark:bg-gray-800/50 rounded-lg text-center">
+                            <p class="text-lg">Total Estimasi Biaya</p>
+                            <p class="text-4xl font-bold text-primary-orange dark:text-dark-orange mt-2" x-text="formatCurrency(totalPrice)"></p>
+                            <p class="text-xs mt-4 text-gray-500">*Harga ini adalah estimasi. Hubungi kami untuk penawaran final.</p>
+                            <a href="kontak.html" class="mt-6 inline-block bg-primary-blue hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full">Lanjutkan Konsultasi &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-100 dark:bg-dark-bg/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8 text-center text-gray-500 dark:text-gray-400">
+                &copy; <span x-text="new Date().getFullYear()"></span> Kumuda Experience (PT Kumuda Kreasi Nusantara). All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
