@@ -94,6 +94,31 @@
                     },
                     formatCurrency(amount) {
                         return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
+                    },
+                    
+                    // --- FUNGSI BARU UNTUK WHATSAPP ---
+                    generateWhatsAppLink() {
+                        const whatsAppNumber = '6285173177156';
+                        const service = this.services.find(s => s.id === this.selectedService);
+                        if (!service) return '#';
+
+                        const selectedFeatures = this.features[this.selectedService]
+                            .filter(f => f.selected)
+                            .map(f => f.name);
+
+                        let message = `Halo Kumuda, saya ingin berkonsultasi mengenai proyek digital saya.\n\n`;
+                        message += `*Layanan Utama:*\n${service.name}\n\n`;
+
+                        if (selectedFeatures.length > 0) {
+                            message += `*Fitur Tambahan:*\n- ${selectedFeatures.join('\n- ')}\n\n`;
+                        } else {
+                            message += `*Fitur Tambahan:*\n (Tidak ada fitur tambahan yang dipilih)\n\n`;
+                        }
+
+                        message += `*Total Estimasi Biaya:*\n${this.formatCurrency(this.totalPrice)}\n\n`;
+                        message += `Mohon informasinya lebih lanjut. Terima kasih.`;
+
+                        return `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(message)}`;
                     }
                 },
                 init() {
@@ -134,13 +159,13 @@
                     </div>
 
                     <div x-show="step === 2" data-aos="fade-up">
-                        <button @click="step = 1" class="mb-6 font-semibold text-primary-blue dark:text-dark-blue">&larr; Kembali Pilih Layanan</button>
+                        <button @click="step = 1; selectedService = ''" class="mb-6 font-semibold text-primary-blue dark:text-dark-blue">&larr; Kembali Pilih Layanan</button>
                         <h2 class="text-3xl lg:text-4xl font-bold">Pilih Fitur Tambahan</h2>
                         <p class="mt-2 text-gray-600 dark:text-gray-300">Centang fitur yang ingin Anda tambahkan ke proyek Anda.</p>
                         <div class="mt-8 space-y-4">
                             <template x-for="feature in features[selectedService]" :key="feature.id">
                                 <label :for="feature.id" class="flex items-center p-4 border rounded-lg cursor-pointer transition" :class="feature.selected ? 'border-primary-orange bg-orange-50/50 dark:bg-gray-800' : 'border-gray-300 dark:border-gray-700'">
-                                    <input :id="feature.id" type="checkbox" @change="toggleFeature(feature)" class="h-5 w-5 rounded text-primary-orange focus:ring-primary-orange">
+                                    <input :id="feature.id" type="checkbox" x-model="feature.selected" @change="calculateTotal()" class="h-5 w-5 rounded text-primary-orange focus:ring-primary-orange">
                                     <span class="ml-4 flex-grow font-semibold" x-text="feature.name"></span>
                                     <span class="text-gray-700 dark:text-gray-200" x-text="'+ ' + formatCurrency(feature.price)"></span>
                                 </label>
@@ -150,7 +175,10 @@
                             <p class="text-lg">Total Estimasi Biaya</p>
                             <p class="text-4xl font-bold text-primary-orange dark:text-dark-orange mt-2" x-text="formatCurrency(totalPrice)"></p>
                             <p class="text-xs mt-4 text-gray-500">*Harga ini adalah estimasi. Hubungi kami untuk penawaran final.</p>
-                            <a href="kontak.html" class="mt-6 inline-block bg-primary-blue hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full">Lanjutkan Konsultasi &rarr;</a>
+                            
+                            <a :href="generateWhatsAppLink()" target="_blank" class="mt-6 inline-block bg-primary-blue hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full">
+                                Lanjutkan Konsultasi &rarr;
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -160,11 +188,11 @@
     
     <footer class="bg-gray-100 dark:bg-dark-bg/50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8 text-center text-gray-500 dark:text-gray-400">
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-8 text-center text-gray-500 dark:text-gray-400">
                 &copy; <span x-text="new Date().getFullYear()"></span> Kumuda Experience (PT Kumuda Kreasi Nusantara). All Rights Reserved.
             </div>
         </div>
     </footer>
 
 </body>
-</html>
+</html>s
